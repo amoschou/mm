@@ -17,7 +17,7 @@
    ```
 4. Create the email class with Markdown template:
 
-   `php artisan make:mail AppointmentConfirmation --markdown=emails.appointment-confirmation`
+   `php artisan make:mail AppointmentConfirmation --markdown=emails.appointment-confirmation-md`
 5. Define the CLI command
 
    `php artisan make:command SendAppointmentConfirmationEmail`
