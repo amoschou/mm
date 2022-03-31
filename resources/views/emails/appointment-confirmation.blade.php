@@ -1,12 +1,11 @@
-@component('mail::message')
-# Introduction
+# Appointment confirmation
 
-The body of your message.
+Dear {{ $data->name }},
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+Your appointment details are as follows:
 
-Thanks,<br>
+* Date: {{ \Carbon\Carbon::createFromFormat('Y-m-d', $data->date)->format('l, j F Y') }}
+* Venue: {{ $data->venue ?? 'TBC' }}
+
+Kind regards,<br>
 {{ config('app.name') }}
-@endcomponent
