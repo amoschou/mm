@@ -1,7 +1,7 @@
 # How to do a 'Mail merge' with a Laravel app.
 
 1. Install PHP and Composer
-2. Create a Laravel application:
+2. Create a Laravel application (https://laravel.com/docs/9.x/installation):
 
    `composer create-project laravel/laravel mm`
 3. Edit `.env` and put in the `MAIL` environment variables:
@@ -25,4 +25,4 @@
 
    `https://github.com/amoschou/mm/compare/2a7bca9..0f2d910?diff=split`
 
-
+7. From the terminal, run `php artisan mail:send-appointment-confirmation` or `php artisan mail:send-appointment-confirmation --json=filename.json`.
