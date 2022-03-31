@@ -30,8 +30,20 @@ class AppointmentConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.appointment-confirmation', [
-            'data' => $this->data,
-        ]);
+        // Use the HTML and TXT templates:
+
+        return $this->subject('Your appointment details')
+             ->cc($this->data->cc ?? null)
+             ->view('emails.appointment-confirmation-html')
+             ->text('emails.appointment-confirmation-txt')
+             ->with([
+                 'data' => $this->data,
+             ]);
+
+        // Or the Markdown template:
+
+        // return $this->markdown('emails.appointment-confirmation-md', [
+        //     'data' => $this->data,
+        // ]);
     }
 }

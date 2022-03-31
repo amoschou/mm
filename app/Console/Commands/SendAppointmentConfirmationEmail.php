@@ -13,7 +13,7 @@ class SendAppointmentConfirmationEmail extends Command
      *
      * @var string
      */
-    protected $signature = 'mail:send-appointment-confirmation';
+    protected $signature = 'mail:send-appointment-confirmation {--json=}';
 
     /**
      * The console command description.
@@ -31,6 +31,8 @@ class SendAppointmentConfirmationEmail extends Command
     {
         foreach ($this->getData() as $label => $data) {
             Mail::to($data->to)->send(new AppointmentConfirmation($data));
+
+            $this->info("Done {$label}.");
         }
 
         return 0;
@@ -38,16 +40,29 @@ class SendAppointmentConfirmationEmail extends Command
     
     /**
      * Get the data to iterate over. Edit this. In some applications, this
-     * could be collected from the database, or from a CSV file, or another
-     * method.
+     * could be collected from the database, or from a JSON/CSV file, or
+     * another method
      *
      * @return array
      */
     public function getData()
     {
+        // If the json option is provided, return data from the json file.
+
+        $jsonFile = $this->option('json');
+
+        if($jsonFile) {
+            return json_decode(file_get_contents($jsonFile), true);
+        }
+
+        // Or return this hard coded data.
+
         return [
             'a' => (object) [
-                'to' => 'a@example.com',
+                'to' => [
+                    'a1@example.com',
+                    'a2@example.com',
+                ],
                 'cc' => [
                     'cc1@example.com',
                     'cc2@example.com'
