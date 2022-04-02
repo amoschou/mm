@@ -45,7 +45,7 @@ class SendAppointmentConfirmationEmail extends Command
      *
      * @return array
      */
-    public function getData()
+    private function getData()
     {
         // If the json option is provided, return data from the json file.
 

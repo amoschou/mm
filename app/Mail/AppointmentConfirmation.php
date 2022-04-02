@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -38,12 +39,26 @@ class AppointmentConfirmation extends Mailable
              ->text('emails.appointment-confirmation-txt')
              ->with([
                  'data' => $this->data,
+                 'formattedDate' => Carbon::createFromFormat('Y-m-d', $data->date)->format('l, j F Y'),
              ]);
 
-        // Or the Markdown template:
+        // Or you might prefer to build the email in this style:
+        //
+        // $this->subject('Your appointment details');
+        // if(! is_null($this->data->cc)) { $this->cc($this->data->Cc); }
+        // $this->view('emails.appointment-confirmation-html')
+        //     ->text('emails.appointment-confirmation-txt')
+        //     ->with([
+        //         'data' => $this->data,
+        //         'formattedDate' => Carbon::createFromFormat('Y-m-d', $data->date)->format('l, j F Y'),
+        //     ]);
+        // return $this;
 
+        // Or the Markdown template:
+        //
         // return $this->markdown('emails.appointment-confirmation-md', [
         //     'data' => $this->data,
+        //     'formattedDate' => Carbon::createFromFormat('Y-m-d', $data->date)->format('l, j F Y'),
         // ]);
     }
 }
