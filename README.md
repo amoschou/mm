@@ -25,4 +25,10 @@
 
    `https://github.com/amoschou/mm/compare/2a7bca9..0f2d910?diff=split`
 
-7. From the terminal, run `php artisan mail:send-appointment-confirmation` or `php artisan mail:send-appointment-confirmation --json=filename.json`.
+7. From the terminal, run:
+
+   `php artisan mail:send-appointment-confirmation`
+   
+   or
+   
+   `php artisan mail:send-appointment-confirmation --json=filename.json`.
