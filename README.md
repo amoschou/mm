@@ -1,6 +1,6 @@
 # How to do a 'Mail merge' with a Laravel app.
 
-1. Install PHP and Composer
+1. Install PHP and Composer. No need to install Apache or another web server.
 2. Create a Laravel application (https://laravel.com/docs/9.x/installation):
 
    `composer create-project laravel/laravel mm`
